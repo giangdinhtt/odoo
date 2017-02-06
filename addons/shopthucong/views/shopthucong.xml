@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets" name="shopthucong assets" inherit_id="point_of_sale.assets">
+            <xpath expr="//script[contains(@src,'models.js')]" position="replace">
+                <script type="text/javascript" src="/shopthucong/static/src/js/models.js"></script>
+            </xpath>
+            <xpath expr="//script[contains(@src,'widget_base.js')]" position="replace">
+                <script type="text/javascript" src="/shopthucong/static/src/js/widget_base.js"></script>
+            </xpath>
+        </template>
+</odoo>

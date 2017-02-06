@@ -14,6 +14,8 @@ Main Features
     """,
     'depends': ['point_of_sale'],
     'data': [
+        'views/shopthucong_template.xml',
+        'views/shopthucong.xml'
     ],
     'demo': [
     ],
