@@ -21,7 +21,7 @@ var PosBaseWidget = Widget.extend({
         options = options || {};
         this.pos    = options.pos    || (parent ? parent.pos : undefined);
         this.chrome = options.chrome || (parent ? parent.chrome : undefined);
-        this.gui    = options.gui    || (parent ? parent.gui : undefined); 
+        this.gui    = options.gui    || (parent ? parent.gui : undefined);
     },
     format_currency: function(amount,precision){
         var currency = (this.pos && this.pos.currency) ? this.pos.currency : {symbol:'$', position: 'after', rounding: 0.01, decimals: 2};
@@ -72,6 +72,11 @@ var PosBaseWidget = Widget.extend({
         }
         return value;
     },
+    generate_barcode: function (selector, value, barcodeType, settings) {
+        // http://www.jqueryscript.net/demo/Simple-jQuery-Based-Barcode-Generator-Barcode/
+        var type = barcodeType ? barcodeType : 'ean13';
+        setTimeout(function() {!settings ? $(selector).barcode(value, type) : $(selector).barcode(value, type, settings);}, 100);
+    }
 });
 
 return PosBaseWidget;

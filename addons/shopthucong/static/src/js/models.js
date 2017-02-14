@@ -1873,10 +1873,11 @@ exports.Order = Backbone.Model.extend({
             return s;
         }
         var d = new Date();
-        return zero_pad(d.getFullYear() % 100,2) + 
+        var uid = zero_pad(d.getFullYear() % 100,2) +
                zero_pad(d.getMonth() + 1,2) + 
                zero_pad(d.getDate(),2) + 
-               zero_pad(this.sequence_number,4);
+               zero_pad(this.sequence_number,6);
+        return addCheckDigit(12 , uid);
     },
     get_name: function() {
         return this.name;

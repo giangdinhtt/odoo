@@ -3,13 +3,35 @@
 
     <t t-name="PosTicket">
         <div class="pos-sale-ticket">
-            
-            <div class="pos-center-align"><t t-esc="moment().format('L LT')"/> <t t-esc="order.name"/></div>
+
+            <div class="pos-center-align">
+                <t t-if='receipt.company.logo'>
+                    <img t-att-src='receipt.company.logo' />
+                    <br/>
+                </t>
+                <t t-esc="widget.pos.company.name"/>
+            </div>
             <br />
-            <t t-esc="widget.pos.company.name"/><br />
-            Giang Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
-            User: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
-            <br />
+            <div font='b'>
+                <t t-if='receipt.company.contact_address'>
+                    <div><t t-esc='receipt.company.contact_address' /></div>
+                </t>
+                <t t-if='widget.pos.company.phone'>
+                    <div>Phone:: <t t-esc="widget.pos.company.phone || ''" /></div>
+                </t>
+                <t t-if='widget.pos.company.vat'>
+                    <div>VAT:<t t-esc='widget.pos.company.vat' /></div>
+                </t>
+                <t t-if='widget.pos.company.email'>
+                    <div><t t-esc='widget.pos.company.email' /></div>
+                </t>
+                <t t-if='widget.pos.company.website'>
+                    <div><t t-esc='widget.pos.company.website' /></div>
+                </t>
+            </div>
+            Cashier: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/>
+            - <t t-esc="moment().format('L LT')"/><br />
+            Order code: <div id="order_barcode"></div><br />
             <t t-if="receipt.header">
                 <div style='text-align:center'>
                     <t t-esc="receipt.header" />
@@ -93,6 +115,7 @@
                     <t t-esc="receipt.footer" />
                 </div>
             </t>
+            <t t-esc="widget.generate_barcode('#order_barcode', order.uid)" />
         </div>
     </t>
 

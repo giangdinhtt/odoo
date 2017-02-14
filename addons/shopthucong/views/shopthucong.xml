@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
         <template id="assets" name="shopthucong assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/shopthucong/static/src/js/jquery-barcode.js"></script>
+                <script type="text/javascript" src="/shopthucong/static/src/js/1d-barcode-generator.js"></script>
+            </xpath>
             <xpath expr="//script[contains(@src,'models.js')]" position="replace">
                 <script type="text/javascript" src="/shopthucong/static/src/js/models.js"></script>
             </xpath>

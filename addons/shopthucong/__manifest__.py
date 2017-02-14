@@ -12,7 +12,7 @@ Main Features
 -------------
 * Beautify receipt billing
     """,
-    'depends': ['point_of_sale'],
+    'depends': ['account', 'point_of_sale'],
     'data': [
         'views/shopthucong_template.xml',
         'views/shopthucong.xml'
