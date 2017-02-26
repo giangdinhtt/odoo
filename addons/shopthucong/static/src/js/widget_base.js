@@ -1,4 +1,4 @@
-odoo.define('shopthucong.BaseWidget', function (require) {
+odoo.define('point_of_sale.BaseWidget', function (require) {
 "use strict";
 
 var formats = require('web.formats');
