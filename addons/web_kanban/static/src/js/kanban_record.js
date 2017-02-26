@@ -131,6 +131,7 @@ var KanbanRecord = Widget.extend({
 
     kanban_image: function(model, field, id, cache, options) {
         options = options || {};
+        console.log(this.record);
         var url;
         if (this.record[field] && this.record[field].value && !utils.is_bin_size(this.record[field].value)) {
             url = 'data:image/png;base64,' + this.record[field].value;
@@ -150,6 +151,7 @@ var KanbanRecord = Widget.extend({
         }
         return url;
     },
+
 
     kanban_getcolor: function(variable) {
         if (typeof(variable) === 'number') {

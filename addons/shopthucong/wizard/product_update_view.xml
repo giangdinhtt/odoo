@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="sp_product_update_view" model="ir.ui.view">
+            <field name="name">Product Update</field>
+            <field name="model">sp.product.update</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Sales Order">
+                    <group>
+                        <field name="file_import"/>
+                    </group>
+                    <footer>
+                        <button name="action_import" string="Import" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_sp_product_update" model="ir.actions.act_window">
+            <field name="name">Product Update</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sp.product.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Product Update" id="menu_sp_product_update_view"
+			parent="point_of_sale.menu_point_of_sale" action="action_view_sp_product_update" sequence="13"/>
+
+</odoo>

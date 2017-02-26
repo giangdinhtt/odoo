@@ -120,6 +120,7 @@ var FieldChar = common.AbstractField.extend(common.ReinitializeFieldMixin, {
         'change': 'store_dom_value',
     },
     init: function (field_manager, node) {
+        console.log(core);
         this._super(field_manager, node);
         this.password = this.node.attrs.password === 'True' || this.node.attrs.password === '1';
     },
