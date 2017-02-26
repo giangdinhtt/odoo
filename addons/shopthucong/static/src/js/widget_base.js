@@ -1,4 +1,4 @@
-odoo.define('point_of_sale.BaseWidget', function (require) {
+odoo.define('shopthucong.BaseWidget', function (require) {
 "use strict";
 
 var formats = require('web.formats');
@@ -74,7 +74,7 @@ var PosBaseWidget = Widget.extend({
     },
     generate_barcode: function (selector, value, barcodeType, settings) {
         // http://www.jqueryscript.net/demo/Simple-jQuery-Based-Barcode-Generator-Barcode/
-        var type = barcodeType ? barcodeType : 'ean13';
+        var type = barcodeType ? barcodeType : 'code128';
         setTimeout(function() {!settings ? $(selector).barcode(value, type) : $(selector).barcode(value, type, settings);}, 100);
     }
 });
