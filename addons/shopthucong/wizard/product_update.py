@@ -30,7 +30,6 @@ class ProductUpdate(models.TransientModel):
             raise UserError(_('Cannot find column sku'))
         if image_name_index < 0:
             raise UserError(_('Cannot find column image_name'))
-        company_id = self.env['res.users']._get_company()
         for r in range(1, sheet.nrows):
             row = sheet.row_values(r)
             name = row[name_index]
@@ -53,6 +52,4 @@ class ProductUpdate(models.TransientModel):
             else:
                 product_id_new = product_env.create(vals)
                 log.info('New Product: %s' % (product_id_new.default_code,))
-            if r > 10:
-                break
         return True
