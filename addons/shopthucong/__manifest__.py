@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
     'name': 'shopthucong.com',
@@ -12,10 +11,12 @@ Main Features
 -------------
 * Beautify receipt billing
     """,
-    'depends': ['account', 'point_of_sale'],
+    'depends': ['point_of_sale','product'],
     'data': [
         'views/shopthucong_template.xml',
-        'views/shopthucong.xml'
+        'views/shopthucong.xml',
+        'views/product_view.xml',
+        'wizard/product_update_view.xml',
     ],
     'demo': [
     ],
