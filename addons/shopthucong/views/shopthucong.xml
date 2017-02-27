@@ -5,6 +5,9 @@
                 <script type="text/javascript" src="/shopthucong/static/src/js/jquery-barcode.js"></script>
                 <!--<script type="text/javascript" src="/shopthucong/static/src/js/1d-barcode-generator.js"></script>-->
             </xpath>
+            <xpath expr="//link[contains(@href,'pos.css')]" position="after">
+                <link rel="stylesheet" href="/shopthucong/static/src/css/style.css" />
+            </xpath>
             <xpath expr="//script[contains(@src,'models.js')]" position="replace">
                 <script type="text/javascript" src="/shopthucong/static/src/js/models.js"></script>
             </xpath>

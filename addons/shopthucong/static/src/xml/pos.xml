@@ -9,29 +9,34 @@
                     <img t-att-src='receipt.company.logo' />
                     <br/>
                 </t>
-                <t t-esc="widget.pos.company.name"/>
             </div>
             <br />
             <div font='b'>
                 <t t-if='receipt.company.contact_address'>
-                    <div><t t-esc='receipt.company.contact_address' /></div>
+                    <div><i class="fa fa-home" aria-hidden="true"></i> <t t-esc='receipt.company.contact_address' /></div>
                 </t>
-                <t t-if='widget.pos.company.phone'>
-                    <div>Phone:: <t t-esc="widget.pos.company.phone || ''" /></div>
+                <t t-if='widget.pos.company.phone || widget.pos.company.email'>
+                    <div>
+                        <t t-if='widget.pos.company.phone'>
+                            <span><i class="fa fa-phone-square" aria-hidden="true"></i> <t t-esc="widget.pos.company.phone || ''" /></span>
+                        </t>
+                        <t t-if='widget.pos.company.email'>
+                            <span><i class="fa fa-envelope-square" aria-hidden="true"></i> <t t-esc='widget.pos.company.email' /></span>
+                        </t>
+                    </div>
                 </t>
                 <t t-if='widget.pos.company.vat'>
                     <div>VAT:<t t-esc='widget.pos.company.vat' /></div>
                 </t>
-                <t t-if='widget.pos.company.email'>
-                    <div><t t-esc='widget.pos.company.email' /></div>
-                </t>
                 <t t-if='widget.pos.company.website'>
-                    <div><t t-esc='widget.pos.company.website' /></div>
+                    <div><i class="fa fa-globe" aria-hidden="true"></i> <t t-esc='widget.pos.company.website' /></div>
                 </t>
             </div>
-            Cashier: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/>
-            - <t t-esc="moment().format('L LT')"/><br />
-            Order code: <div id="order_barcode"></div><br />
+            <div>
+                <i class="fa fa-male" aria-hidden="true"></i> <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/>
+                - <t t-esc="moment().format('L LT')"/>
+            </div>
+            <div id="order-barcode" class="pos-center-align order-barcode"></div>
             <t t-if="receipt.header">
                 <div style='text-align:center'>
                     <t t-esc="receipt.header" />
@@ -40,11 +45,21 @@
             </t>
             <table class='receipt-orderlines'>
                 <colgroup>
+                    <col width='5%' />
                     <col width='50%' />
-                    <col width='25%' />
+                    <col width='20%' />
                     <col width='25%' />
                 </colgroup>
+                <tr class="items-list-header" style="font-weight: bold; border-bottom: thin solid;">
+                    <td>#</td>
+                    <td>Name</td>
+                    <td class="pos-right-align">Quantity</td>
+                    <td class="pos-right-align">Price</td>
+                </tr>
                 <tr t-foreach="orderlines" t-as="orderline">
+                    <td>
+                        <span t-esc="orderline_index + 1" />
+                    </td>
                     <td>
                         <t t-esc="orderline.get_product().display_name"/>
                          <t t-if="orderline.get_discount() > 0">
@@ -62,29 +77,29 @@
                 </tr>
             </table>
             <br />
-            <table class='receipt-total'>
+            <table class='receipt-total' style="border-top: thin double;">
                 <tr>
-                    <td>Subtotal:</td>
+                    <td class="pos-right-align">Subtotal:</td>
                     <td class="pos-right-align">
                         <t t-esc="widget.format_currency(order.get_total_without_tax())"/>
                     </td>
                 </tr>
                 <t t-foreach="order.get_tax_details()" t-as="taxdetail">
                     <tr>
-                        <td><t t-esc="taxdetail.name" /></td>
+                        <td class="pos-right-align"><t t-esc="taxdetail.name" /></td>
                         <td class="pos-right-align">
                             <t t-esc="widget.format_currency(taxdetail.amount)" />
                         </td>
                     </tr>
                 </t>
                 <tr>
-                    <td>Discount:</td>
+                    <td class="pos-right-align">Discount:</td>
                     <td class="pos-right-align">
                         <t t-esc="widget.format_currency(order.get_total_discount())"/>
                     </td>
                 </tr>
                 <tr class="emph">
-                    <td>Total:</td>
+                    <td class="pos-right-align">Total:</td>
                     <td class="pos-right-align">
                         <t t-esc="widget.format_currency(order.get_total_with_tax())"/>
                     </td>
@@ -94,7 +109,7 @@
             <table class='receipt-paymentlines'>
                 <t t-foreach="paymentlines" t-as="line">
                   <tr>
-                      <td>
+                      <td class="pos-right-align">
                           <t t-esc="line.name"/>
                       </td>
                       <td class="pos-right-align">
@@ -103,11 +118,13 @@
                   </tr>
                 </t>
             </table>
-            <br />
             <table class='receipt-change'>
-                <tr><td>Change:</td><td class="pos-right-align">
-                    <t t-esc="widget.format_currency(order.get_change())"/>
-                    </td></tr>
+                <tr>
+                    <td class="pos-right-align">Change:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.get_change())"/>
+                    </td>
+                </tr>
             </table>
             <t t-if="receipt.footer">
                 <br />
@@ -115,7 +132,7 @@
                     <t t-esc="receipt.footer" />
                 </div>
             </t>
-            <t t-esc="widget.generate_barcode('#order_barcode', order.uid)" />
+            <t t-esc="widget.generate_barcode('#order-barcode', order.uid)" />
         </div>
     </t>
 

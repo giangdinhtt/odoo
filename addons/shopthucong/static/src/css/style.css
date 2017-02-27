@@ -1,0 +1,8 @@
+.pos .pos-sale-ticket .emph{
+    font-size: 1.2em;
+    margin:5px;
+    font-weight: bold;
+}
+.pos .order-barcode {
+    margin: 10px auto;
+}

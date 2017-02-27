@@ -153,7 +153,7 @@ exports.PosModel = Backbone.Model.extend({
         loaded: function(self,users){ self.user = users[0]; },
     },{ 
         model:  'res.company',
-        fields: [ 'currency_id', 'email', 'website', 'company_registry', 'vat', 'name', 'phone', 'partner_id' , 'country_id', 'tax_calculation_rounding_method'],
+        fields: [ 'currency_id', 'email', 'website', 'company_registry', 'vat', 'name', 'phone', 'partner_id' , 'country_id', 'tax_calculation_rounding_method', 'street'],
         ids:    function(self){ return [self.user.company_id[0]]; },
         loaded: function(self,companies){ self.company = companies[0]; },
     },{
@@ -1829,7 +1829,8 @@ exports.Order = Backbone.Model.extend({
                 email: company.email,
                 website: company.website,
                 company_registry: company.company_registry,
-                contact_address: company.partner_id[1], 
+                //contact_address: company.partner_id[1],
+                contact_address: company.street,
                 vat: company.vat,
                 name: company.name,
                 phone: company.phone,
@@ -1854,7 +1855,6 @@ exports.Order = Backbone.Model.extend({
         } else {
             receipt.footer = this.pos.config.receipt_footer || '';
         }
-
         return receipt;
     },
     is_empty: function(){
