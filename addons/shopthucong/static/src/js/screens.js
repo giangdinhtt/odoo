@@ -4,6 +4,7 @@ odoo.define('shopthucong.screens', function (require) {
 var screens = require('point_of_sale.screens');
 screens.ProductListWidget.include({
     get_product_image_url: function(product){
+        console.log(product);
         return product.image_url;
     },
 });
