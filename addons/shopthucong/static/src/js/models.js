@@ -1875,8 +1875,9 @@ exports.Order = Backbone.Model.extend({
         var d = new Date();
         var uid = zero_pad(d.getFullYear() % 100,2) +
                zero_pad(d.getMonth() + 1,2) + 
-               zero_pad(d.getDate(),2) + 
-               zero_pad(this.sequence_number,6);
+               zero_pad(d.getDate(),2) +
+               zero_pad(this.pos.pos_session.id,2) +
+               zero_pad(this.sequence_number,3);
         // return addCheckDigit(12 , uid);
         return uid;
     },

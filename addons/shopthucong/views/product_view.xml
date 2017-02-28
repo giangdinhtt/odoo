@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="product.product_normal_form_view"/>
         <field name="arch" type="xml">
             <field name="image_medium" position="replace">
-                <field name="image_url" widget="html">
+                <field name="image_tag" widget="html">
                 </field>
             </field>
         </field>
@@ -18,13 +18,13 @@
         <field name="inherit_id" ref="product.product_kanban_view"/>
         <field name="arch" type="xml">
             <field name="image_small" position="after">
-                <field name="image_uri"/>
+                <field name="image_url"/>
                 <field name="company_id"/>
             </field>
             <xpath expr="//div[@class='o_kanban_image']" position="replace">
                 <div class="o_kanban_image">
-                    <div t-if="record.image_uri.value">
-                        <img t-attf-src="##{record.image_uri.value}" height="64" width="64"/>
+                    <div t-if="record.image_url.value">
+                        <img t-attf-src="##{record.image_url.value}" height="64" width="64"/>
                     </div>
                 </div>
             </xpath>
