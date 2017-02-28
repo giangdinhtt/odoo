@@ -8,7 +8,7 @@ class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     @api.one
-    @api.depends('company_id.website', 'image_name', 'company_id')
+    @api.depends('company_id', 'company_id.website', 'image_uri')
     def _get_image_url(self):
         self.image_url = self.company_id.website + '/image/' + self.image_uri
         self.image_tag = """<img src="%s" height="128" width="128"/>""" % (self.image_url,)

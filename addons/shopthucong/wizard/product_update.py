@@ -38,7 +38,7 @@ class ProductUpdate(models.TransientModel):
             price = row[price_index] or 0.0
             vals = {'name': name,
                     'default_code': sku,
-                    'image_name': image_name,
+                    'image_uri': image_name,
                     'barcode': sku,
                     'sale_ok': True,
                     'purchase_ok': True,
