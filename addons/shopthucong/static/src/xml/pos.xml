@@ -79,13 +79,13 @@
                 <colgroup>
                     <col width='5%' />
                     <col width='50%' />
-                    <col width='20%' />
-                    <col width='25%' />
+                    <col width='15%' />
+                    <col width='30%' />
                 </colgroup>
                 <tr class="items-list-header" style="font-weight: bold; border-bottom: thin solid;">
                     <td>#</td>
                     <td>Name</td>
-                    <td class="pos-right-align">Quantity</td>
+                    <td class="pos-right-align">SLượng</td>
                     <td class="pos-right-align">Price</td>
                 </tr>
                 <tr t-foreach="orderlines" t-as="orderline">
