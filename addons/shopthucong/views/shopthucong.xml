@@ -14,5 +14,8 @@
             <xpath expr="//script[contains(@src,'widget_base.js')]" position="replace">
                 <script type="text/javascript" src="/shopthucong/static/src/js/widget_base.js"></script>
             </xpath>
+            <xpath expr="//script[contains(@src,'screens.js')]" position="after">
+                <script type="text/javascript" src="/shopthucong/static/src/js/screens.js"></script>
+            </xpath>
         </template>
 </odoo>
