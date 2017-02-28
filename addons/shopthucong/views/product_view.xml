@@ -24,7 +24,7 @@
             <xpath expr="//div[@class='o_kanban_image']" position="replace">
                 <div class="o_kanban_image">
                     <div t-if="record.image_url.value">
-                        <img t-attf-src="##{record.image_url.value}" height="64" width="64"/>
+                        <img t-attf-src="#{record.image_url.value}" height="64" width="64"/>
                     </div>
                 </div>
             </xpath>
