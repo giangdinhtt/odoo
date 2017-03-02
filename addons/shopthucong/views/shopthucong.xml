@@ -4,16 +4,12 @@
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/shopthucong/static/src/js/jquery-barcode.js"></script>
                 <!--<script type="text/javascript" src="/shopthucong/static/src/js/1d-barcode-generator.js"></script>-->
+                <script type="text/javascript" src="/shopthucong/static/src/js/models.js"></script>
+                <script type="text/javascript" src="/shopthucong/static/src/js/widget_base.js"></script>
                 <script type="text/javascript" src="/shopthucong/static/src/js/screens.js"></script>
             </xpath>
              <xpath expr="//link[@id='pos-stylesheet']" position="after">
                 <link rel="stylesheet" href="/shopthucong/static/src/css/style.css" />
-            </xpath>
-            <xpath expr="//script[contains(@src,'models.js')]" position="replace">
-                <script type="text/javascript" src="/shopthucong/static/src/js/models.js"></script>
-            </xpath>
-            <xpath expr="//script[contains(@src,'widget_base.js')]" position="replace">
-                <script type="text/javascript" src="/shopthucong/static/src/js/widget_base.js"></script>
             </xpath>
         </template>
 </odoo>

@@ -85,7 +85,7 @@
                 <tr class="items-list-header" style="font-weight: bold; border-bottom: thin solid;">
                     <td>#</td>
                     <td>Name</td>
-                    <td class="pos-right-align">SLượng</td>
+                    <td class="pos-right-align">SL</td>
                     <td class="pos-right-align">Price</td>
                 </tr>
                 <tr t-foreach="orderlines" t-as="orderline">
