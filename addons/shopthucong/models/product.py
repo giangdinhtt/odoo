@@ -10,7 +10,8 @@ class ProductProduct(models.Model):
     @api.one
     @api.depends('company_id', 'company_id.website', 'image_uri')
     def _get_image_url(self):
-        self.image_url = self.company_id.website + '/image/' + self.image_uri
+        uri = self.image_uri if self.image_uri else ''
+        self.image_url =  self.company_id.website + '/image/' + uri
         self.image_tag = """<img src="%s" height="128" width="128"/>""" % (self.image_url,)
 
     image_uri = fields.Char('Image URI')
